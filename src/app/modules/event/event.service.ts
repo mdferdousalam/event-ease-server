@@ -63,7 +63,7 @@ const registerAttendee = async (
   await event.save();
 
     // Emit the real-time event
-    io.to(event.createdBy).emit("new-attendee", {
+    io.emit("new-attendee", {
       eventId,
       userId,
       message: `New attendee registered for the event ${event.title}`,
