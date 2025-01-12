@@ -2,14 +2,14 @@ import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import helmet from "helmet";
 import globalErrorHandler from "./app/middlewares/globalErrorhandler";
-import router from "./app/routes";
 import notFound from "./app/middlewares/notFound";
 import apiLimiter from "./app/middlewares/rateLimiter";
-import performanceLogger from "./app/middlewares/performancLogger";
-import sanitizeRequest from "./app/middlewares/requestSanitizeer";
+import performanceLogger from "./app/middlewares/performanceLogger";
+import sanitizeRequest from "./app/middlewares/requestSanitizer";
+
+import router from "./app/routes";
 
 const app: Application = express();
-
 // Security middleware
 app.use(helmet());
 
