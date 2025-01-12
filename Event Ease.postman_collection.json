@@ -1,0 +1,343 @@
+{
+	"info": {
+		"_postman_id": "28c392dc-82fd-4a29-bc31-a75cd362ca95",
+		"name": "Event Ease",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20506864"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"email\": \"ferdous1@gmail.com\",\n  \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Server Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"protocolProfileBehavior": {
+						"protocolVersion": "auto"
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"ferdous1@gmail.com\",\n  \"password\": \"123456\",\n  \"name\": \"Ferdous\",\n  \"status\": \"allowed\",\n  \"role\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/user/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg0MTUxOWNjZTJhZjYyOGM2ZWMzYzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY3MTEzNzAsImV4cCI6MTczNjcxNDk3MH0.3ZpgyOvgzqWDDeDsM6SOlo4V8VzYwAlOzCTTeHdypd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Annual Tech Conference\",\n  \"description\": \"A gathering of technology enthusiasts to discuss the latest trends in the industry.\",\n  \"date\": \"2025-02-15T10:00:00Z\",\n  \"location\": \"Tech Park, Silicon Valley, CA\",\n  \"organizer\": \"Tech Innovators Group\",\n  \"maxAttendees\": 1,\n  \"createdBy\": \"admin123\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/event/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg0MTUxOWNjZTJhZjYyOGM2ZWMzYzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY3MTEzNzAsImV4cCI6MTczNjcxNDk3MH0.3ZpgyOvgzqWDDeDsM6SOlo4V8VzYwAlOzCTTeHdypd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"maxAttendees\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/event/67841d93de81d72fe841657f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"67841d93de81d72fe841657f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Event",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg0MTUxOWNjZTJhZjYyOGM2ZWMzYzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY3MTEzNzAsImV4cCI6MTczNjcxNDk3MH0.3ZpgyOvgzqWDDeDsM6SOlo4V8VzYwAlOzCTTeHdypd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"maxAttendees\": 5\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/event/67841d93de81d72fe841657f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"67841d93de81d72fe841657f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg0MTUxOWNjZTJhZjYyOGM2ZWMzYzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY3MTEzNzAsImV4cCI6MTczNjcxNDk3MH0.3ZpgyOvgzqWDDeDsM6SOlo4V8VzYwAlOzCTTeHdypd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"eventId\": \"67841d93de81d72fe841657f\",\n  \"userId\": \"67841519cce2af628c6ec3c6\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/event/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Event",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg0MTUxOWNjZTJhZjYyOGM2ZWMzYzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY3MTEzNzAsImV4cCI6MTczNjcxNDk3MH0.3ZpgyOvgzqWDDeDsM6SOlo4V8VzYwAlOzCTTeHdypd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"eventId\": \"67841d93de81d72fe841657f\",\n  \"userId\": \"67841519cce2af628c6ec3c6\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/event/67841d93de81d72fe841657f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"67841d93de81d72fe841657f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Events",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Nzg0MTUxOWNjZTJhZjYyOGM2ZWMzYzciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzY3MTEzNzAsImV4cCI6MTczNjcxNDk3MH0.3ZpgyOvgzqWDDeDsM6SOlo4V8VzYwAlOzCTTeHdypd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"eventId\": \"67841d93de81d72fe841657f\",\n  \"userId\": \"67841519cce2af628c6ec3c6\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/event/all-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"event",
+								"all-events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

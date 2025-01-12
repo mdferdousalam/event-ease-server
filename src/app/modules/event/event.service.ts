@@ -7,6 +7,12 @@ const createEvent = async (eventData: TEvent): Promise<TEvent> => {
   const result = await event.save();
   return result;
 };
+// get all events
+const getEvents = async (): Promise<TEvent[]> => {
+  const events = await Event.find();
+  return events;
+};
+  
 
 const getEventById = async (eventId: string): Promise<TEvent | null> => {
   const result = await Event.findById(eventId);
@@ -41,6 +47,11 @@ const updateEvent = async (
   return updatedEvent;
 };
 
+const deleteEvent = async (eventId: string): Promise<void> => {
+  await Event.findByIdAndDelete(eventId);
+};
+
+
 const registerAttendee = async (
   eventId: string,
   userId: string
@@ -74,8 +85,10 @@ const registerAttendee = async (
 
 export const EventServices = {
   createEvent,
+  getEvents,
   getEventById,
   updateEvent,
+  deleteEvent,
   registerAttendee,
 };
 

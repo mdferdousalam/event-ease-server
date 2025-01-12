@@ -13,7 +13,7 @@ const performanceLogger = (req: Request, res: Response, next: NextFunction) => {
     console.log(`[PERF] ${req.method} ${req.path} - ${duration}ms`);
 
     // Log slow requests
-    if (duration > 100) {
+    if (duration > 300) {
       console.warn(
         `[SLOW_REQUEST] ${req.method} ${req.path} took ${duration}ms`,
       );

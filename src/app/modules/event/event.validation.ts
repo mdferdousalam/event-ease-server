@@ -23,3 +23,16 @@ export const registerValidationSchema = z.object({
   eventId: z.string().min(1, "Event ID is required"),
   userId: z.string().min(1, "User ID is required"),
 });
+
+
+//update Schema
+export const updateEventValidationSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+  date: z.string().optional(),
+  location: z.string().optional(),
+  organizer: z.string().optional(),
+  attendees: z.array(z.string().optional()).optional(),
+  maxAttendees: z.number().int().optional(),
+  createdBy: z.string().optional(),
+  });  //optional fields for update

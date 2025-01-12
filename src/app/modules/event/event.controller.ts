@@ -17,6 +17,19 @@ const createEvent = asyncErrorHandler(async (req, res) => {
   }
 });
 
+//get all events
+const getEvents = asyncErrorHandler(async (req, res) => {
+  try {
+    const result = await EventServices.getEvents();
+    SUCCESS(res, httpStatus.OK, "Events are fetched successfully", result);
+  } catch (error) {
+    ERROR(res, httpStatus.INTERNAL_SERVER_ERROR, "Failed to retrieve events", [
+      error,
+    ]);
+  }
+});
+    
+
 const getEventById = asyncErrorHandler(async (req, res) => {
   try {
     const eventId = req.params.id;
@@ -44,6 +57,21 @@ const updateEvent = asyncErrorHandler(async (req, res) => {
   }
 });
 
+const deleteEvent = asyncErrorHandler(async (req, res) => {
+  try {
+    const eventId = req.params.id;
+    const result = await EventServices.deleteEvent(eventId);
+    SUCCESS(res, httpStatus.OK, "Event is deleted successfully", result);
+  } catch (error) {
+    ERROR(res, httpStatus.INTERNAL_SERVER_ERROR, "Failed to delete event", [
+      error,
+    ]);
+  } 
+});
+  
+
+
+    
 const registerAttendee = asyncErrorHandler(async (req, res) => {
   try {
     const { eventId, userId } = req.body; // Expecting eventId and userId in the request body
@@ -71,7 +99,9 @@ const registerAttendee = asyncErrorHandler(async (req, res) => {
 
 export const EventControllers = {
   createEvent,
+  getEvents,
   getEventById,
   updateEvent,
+  deleteEvent,
   registerAttendee,
 };
