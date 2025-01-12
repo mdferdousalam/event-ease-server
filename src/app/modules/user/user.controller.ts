@@ -7,6 +7,7 @@ import asyncErrorHandler from "../../utils/asyncErrorHandler";
 const registerUser = asyncErrorHandler(async (req, res) => {
   try {
     const userData = req.body;
+    console.log(userData);
     const result = await UserServices.createUserIntoDB(userData);
 
     SUCCESS(res, httpStatus.OK, "User is created successfully", result);

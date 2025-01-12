@@ -1,16 +1,16 @@
-export const USER_ROLE = {
-  normalUser: "normalUser",
-  moderator: "moderator",
-  admin: "admin",
-};
+export enum UserStatus {
+  ALLOWED = "allowed",
+  BLOCKED = "blocked",
+  PENDING = "pending",
+  ACTIVE = "active",
+  INACTIVE = "inactive",
+}
 
-export const UserStatus = {
-  active: "active",
-  inactive: "inactive",
-  pending: "pending",
-  blocked: "blocked",
-  allowed: "allowed",
-};
+export enum USER_ROLE {
+  ADMIN = "admin",
+  MODERATOR = "moderator",
+  NORMAL_USER = "normalUser",
+}
 
 export interface IName {
   firstName: string;

@@ -2,11 +2,11 @@ import { Model } from "mongoose";
 import { USER_ROLE, UserStatus } from "../../utils/user.enums";
 
 export interface TUser {
-  name: string;
   email: string;
   password: string;
-  role: (typeof USER_ROLE)[keyof typeof USER_ROLE];
-  status: (typeof UserStatus)[keyof typeof UserStatus];
+  name: string;
+  status: UserStatus;
+  role: USER_ROLE;
 }
 
 export type UserModel = Model<TUser>;

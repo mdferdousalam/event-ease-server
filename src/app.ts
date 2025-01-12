@@ -13,6 +13,7 @@ const app: Application = express();
 // Security middleware
 app.use(helmet());
 
+app.disable("x-powered-by"); 
 //parsers
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));

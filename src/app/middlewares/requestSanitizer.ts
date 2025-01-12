@@ -8,7 +8,7 @@ import { Request, Response, NextFunction } from "express";
 
 const sanitizeRequest = (req: Request, res: Response, next: NextFunction) => {
   // Deep sanitization of request body
-  if (req.body) {
+  if (req.body && typeof req.body === "object" && !Array.isArray(req.body)) {
     req.body = Object.keys(req.body).reduce(
       (acc: { [key: string]: any }, key: string) => {
         // Trim string values, leave other types unchanged
@@ -18,7 +18,7 @@ const sanitizeRequest = (req: Request, res: Response, next: NextFunction) => {
             : req.body[key];
         return acc;
       },
-      {},
+      {}
     );
   }
   next();

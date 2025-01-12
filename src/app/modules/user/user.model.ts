@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { Schema, model } from "mongoose";
 import config from "../../config";
 import { TUser, UserModel } from "./user.interface";
-import { UserStatus } from "../../utils/user.enums";
+import { USER_ROLE, UserStatus } from "../../utils/user.enums";
 const userSchema = new Schema<TUser, UserModel>(
   {
     name: {
@@ -21,12 +21,11 @@ const userSchema = new Schema<TUser, UserModel>(
     },
     role: {
       type: String,
-      enum: ["admin", "moderator", "normalUser"],
+      enum: USER_ROLE,
     },
     status: {
       type: String,
       enum: UserStatus,
-      default: "allowed",
     },
   },
   {
