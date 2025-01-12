@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-this-alias */
-import bcrypt from 'bcryptjs';
-import { Schema, model } from 'mongoose';
-import config from '../../config';
-import { TUser, UserModel } from './user.interface';
-import { UserStatus } from '../../utils/user.enums';
+import bcrypt from "bcryptjs";
+import { Schema, model } from "mongoose";
+import config from "../../config";
+import { TUser, UserModel } from "./user.interface";
+import { UserStatus } from "../../utils/user.enums";
 const userSchema = new Schema<TUser, UserModel>(
   {
     name: {
@@ -22,12 +21,12 @@ const userSchema = new Schema<TUser, UserModel>(
     },
     role: {
       type: String,
-      enum: ['admin', 'moderator', 'normalUser'],
+      enum: ["admin", "moderator", "normalUser"],
     },
     status: {
       type: String,
       enum: UserStatus,
-      default: 'allowed',
+      default: "allowed",
     },
   },
   {
@@ -36,7 +35,7 @@ const userSchema = new Schema<TUser, UserModel>(
 );
 
 // hash password before saving
-userSchema.pre('save', async function (next) {
+userSchema.pre("save", async function (next) {
   // eslint-disable-next-line @typescript-eslint/no-this-alias
   const user = this; // user instance
   // hashing password and save into DB
@@ -50,10 +49,9 @@ userSchema.pre('save', async function (next) {
 });
 
 // set '' after saving password
-userSchema.post('save', function (doc, next) {
-  doc.password = '';
+userSchema.post("save", function (doc, next) {
+  doc.password = "";
   next();
 });
 
-
-export const User = model<TUser, UserModel>('User', userSchema);
+export const User = model<TUser, UserModel>("User", userSchema);

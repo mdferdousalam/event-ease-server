@@ -11,7 +11,7 @@ const validateRequest = (schema: AnyZodObject) => {
       });
 
       next();
-    }
+    },
   );
 };
 

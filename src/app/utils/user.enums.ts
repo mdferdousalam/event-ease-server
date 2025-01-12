@@ -2,7 +2,7 @@ export const USER_ROLE = {
   normalUser: "normalUser",
   moderator: "moderator",
   admin: "admin",
-}
+};
 
 export const UserStatus = {
   active: "active",
@@ -10,8 +10,7 @@ export const UserStatus = {
   pending: "pending",
   blocked: "blocked",
   allowed: "allowed",
-}
-
+};
 
 export interface IName {
   firstName: string;

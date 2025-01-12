@@ -4,7 +4,7 @@ import httpStatus from "http-status";
 const notFound: express.RequestHandler = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   res.status(httpStatus.NOT_FOUND).json({
     success: false,

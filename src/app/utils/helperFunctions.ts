@@ -3,7 +3,7 @@ import { Email } from "./user.enums";
 export function generateNextPageLink(
   baseUrl: string,
   page: number,
-  limit: number
+  limit: number,
 ): string {
   const nextPage = page + 1;
   return `${baseUrl}?page=${nextPage}&limit=${limit}`;
@@ -12,7 +12,7 @@ export function generateNextPageLink(
 export function generatePrevPageLink(
   baseUrl: string,
   page: number,
-  limit: number
+  limit: number,
 ): string {
   const prevPage = page > 1 ? page - 1 : 1;
   return `${baseUrl}?page=${prevPage}&limit=${limit}`;

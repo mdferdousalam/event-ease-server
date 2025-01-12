@@ -2,7 +2,6 @@
 import httpStatus from "http-status";
 import { APIResponseError } from "../utils/api.response.types";
 
-
 const handleDuplicateError = (err: any): APIResponseError => {
   const match = err.message.match(/"([^"]*)"/);
   const extractedMessage = match && match[1];

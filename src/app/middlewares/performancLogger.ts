@@ -2,7 +2,9 @@
  * Performance logging middleware
  * Tracks request processing time and logs performance metrics
  */
-const performanceLogger = (req, res, next) => {
+import { Request, Response, NextFunction } from "express";
+
+const performanceLogger = (req: Request, res: Response, next: NextFunction) => {
   const start = Date.now();
 
   // Log request duration when response finishes
@@ -13,7 +15,7 @@ const performanceLogger = (req, res, next) => {
     // Log slow requests
     if (duration > 100) {
       console.warn(
-        `[SLOW_REQUEST] ${req.method} ${req.path} took ${duration}ms`
+        `[SLOW_REQUEST] ${req.method} ${req.path} took ${duration}ms`,
       );
     }
   });

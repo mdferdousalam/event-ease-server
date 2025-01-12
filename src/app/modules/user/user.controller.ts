@@ -12,7 +12,7 @@ const registerUser = asyncErrorHandler(async (req, res) => {
     SUCCESS(res, httpStatus.OK, "User is created successfully", result);
   } catch (error) {
     ERROR(res, httpStatus.INTERNAL_SERVER_ERROR, "Failed to create user", [
-      error.message,
+      error,
     ]);
   }
 });
@@ -25,7 +25,7 @@ const getMe = asyncErrorHandler(async (req, res) => {
     SUCCESS(res, httpStatus.OK, "User is retrieved successfully", result);
   } catch (error) {
     ERROR(res, httpStatus.INTERNAL_SERVER_ERROR, "Failed to retrieve user", [
-      error.message,
+      error,
     ]);
   }
 });
@@ -38,7 +38,7 @@ const changeStatus = asyncErrorHandler(async (req, res) => {
     SUCCESS(res, httpStatus.OK, "Status is updated successfully", result);
   } catch (error) {
     ERROR(res, httpStatus.INTERNAL_SERVER_ERROR, "Failed to update status", [
-      error.message,
+      error,
     ]);
   }
 });

@@ -1,37 +1,36 @@
-import express from 'express';
-import validateRequest from '../../middlewares/validateRequest';
-import { AuthControllers } from './auth.controller';
-import { AuthValidation } from './auth.validation';
-
+import express from "express";
+import validateRequest from "../../middlewares/validateRequest";
+import { AuthControllers } from "./auth.controller";
+import { AuthValidation } from "./auth.validation";
 
 const router = express.Router();
 
 router.post(
-  '/login',
+  "/login",
   validateRequest(AuthValidation.loginValidationSchema),
   AuthControllers.loginUser,
 );
 
 router.post(
-  '/change-password',
+  "/change-password",
   validateRequest(AuthValidation.changePasswordValidationSchema),
   AuthControllers.changePassword,
 );
 
 router.post(
-  '/refresh-token',
+  "/refresh-token",
   validateRequest(AuthValidation.refreshTokenValidationSchema),
   AuthControllers.refreshToken,
 );
 
 router.post(
-  '/forget-password',
+  "/forget-password",
   validateRequest(AuthValidation.forgetPasswordValidationSchema),
   AuthControllers.forgetPassword,
 );
 
 router.post(
-  '/reset-password',
+  "/reset-password",
   validateRequest(AuthValidation.forgetPasswordValidationSchema),
   AuthControllers.resetPassword,
 );

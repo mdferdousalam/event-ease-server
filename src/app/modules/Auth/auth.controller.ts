@@ -42,7 +42,7 @@ const refreshToken = asyncErrorHandler(async (req, res) => {
     res,
     httpStatus.OK,
     "Access token is retrieved successfully!",
-    result
+    result,
   );
 });
 

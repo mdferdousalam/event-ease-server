@@ -42,7 +42,7 @@ export function ERROR(
   statusCode: number = 400,
   message: string,
   errors?: any[],
-  stack?: string
+  stack?: string,
 ) {
   const apiResponse: APIResponseError = {
     success: false,

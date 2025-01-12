@@ -1,8 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import cors from "cors";
 import express, { Application, Request, Response } from "express";
 import helmet from "helmet";
@@ -12,7 +7,6 @@ import notFound from "./app/middlewares/notFound";
 import apiLimiter from "./app/middlewares/rateLimiter";
 import performanceLogger from "./app/middlewares/performancLogger";
 import sanitizeRequest from "./app/middlewares/requestSanitizeer";
-
 
 const app: Application = express();
 
@@ -37,14 +31,13 @@ const corsOptions = {
 // Apply CORS middleware
 app.use(cors(corsOptions));
 
+app.use("/api/", apiLimiter);
 
-app.use('/api/', apiLimiter);
-  
 // Performance Logger
 app.use(performanceLogger);
 //request sanitization
 app.use(sanitizeRequest);
-  
+
 // application routes
 app.get("/", (req: Request, res: Response) => {
   res.send(`Server health is good and running well`);
@@ -56,6 +49,5 @@ app.use("/api/v1", router);
 app.use(globalErrorHandler);
 //Not Found
 app.use(notFound);
-
 
 export default app;
