@@ -19,7 +19,7 @@ export const userValidationSchema = z.object({
 });
 
 export const changeStatusValidationSchema = z.object({
-  body: z.object({
+ 
     status: z.enum(Object.values(UserStatus) as [string, ...string[]]),
-  }),
+
 });

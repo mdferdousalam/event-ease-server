@@ -9,9 +9,11 @@ import { TLoginUser } from "./auth.interface";
 import { createToken, verifyToken } from "../../utils/auth.utils";
 
 const loginUser = async (payload: TLoginUser) => {
+  const {email, password} = payload;
   // checking if the user is exist
-  const user = await User.findOne({ email: payload.email });
 
+  const user = await User.findOne({ email});
+  console.log(user)
   if (!user) {
     throw new AppError(httpStatus.NOT_FOUND, "This user is not found !");
   }
@@ -23,14 +25,18 @@ const loginUser = async (payload: TLoginUser) => {
     throw new AppError(httpStatus.FORBIDDEN, "This user is blocked ! !");
   }
 
-  //checking if the password is correct
-  const isPasswordCorrect = await bcrypt.compare(
-    payload.password,
-    user.password,
-  );
-  if (!isPasswordCorrect) {
-    throw new AppError(httpStatus.FORBIDDEN, "Password do not matched");
-  }
+  //check if the password is correct 
+ 
+try {
+  const isPasswordCorrect = await bcrypt.compare(password, user.password);
+   if (!isPasswordCorrect) {
+     throw new AppError(httpStatus.FORBIDDEN, "Password do not matched");
+   }
+} catch (error) {
+  console.log(error)
+  
+}
+ 
 
   //create token and sent to the  client
 

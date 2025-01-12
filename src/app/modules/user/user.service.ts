@@ -1,11 +1,13 @@
 import httpStatus from "http-status";
+import bcrypt from "bcryptjs";
 import AppError from "../../errors/AppError";
 import { TUser } from "./user.interface";
 import { User } from "./user.model";
 import { decodeToken } from "../../utils/auth.utils";
 
 const createUserIntoDB = async (userData: TUser): Promise<TUser> => {
-  const user = new User(userData);
+  const hashedPassword = await bcrypt.hash(userData.password, 10);
+  const user = new User({ ...userData, password: hashedPassword });
   const result = await user.save();
   return result;
 };
